@@ -1,0 +1,43 @@
+Command line Artisan
+php artisan migrate
+php artisan migrate:rollback (roll back)
+php artisan serve => run sv
+php artisan config:cache (clear cache)
+php artisan make:controller ArticleController => tao controller ArticleController
+php artisan make:model Article => tao 1 model ten Article
+php artisan make:model Article -m => -m de tao ra migration cua Model Article
+
+php artisan make:controller ArticleController --resource -> Tao controller co san resource (tao ham co san)
+
+php artisan route:list => xem list route
+
+
+Blade la 1 template Engine => https://laravel.com/docs/6.x/blade
+
+Return view trong ham index cho 1 Controller        return view('article.list', ['articles' => $articles]);
+ hoac return view('article.list')->with('articles', $articles);
+
+
+Dung @csrf tai blade neu bi 419 expired
+
+   public function store(Request $request)
+    {
+        //
+        $article = new Article();
+        $article->title = $request->title;
+        $article->content = $request->content;
+        $article->save();
+
+        return redirect()->route('baiviet.create')->with('msg', 'Dang bai thanh cong');
+    }
+/// demo return redirect
+
+Seeder : 
+ + Tao du lieu mau
+Lenh tao seeder : php artisan make:seeder ArticlesTableSeeder // tao seeder ten ARticlesTableSeeder
+
+Lenh chay Seeder : php artisan db:seed
+
+composer dump-autoload -> Cap nhat lai danh sach cac thu vien de tai ra file autoload trong vender
+
+php artisan make:request StoreArticleRequest -> tao Request StoreArticleRequest
